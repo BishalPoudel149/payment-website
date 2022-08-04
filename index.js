@@ -1,21 +1,14 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const connection = require("./db");
-const userRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
+import React from 'react'
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
 
-// database connection
-connection();
-
-// middlewares
-app.use(express.json());
-app.use(cors());
-
-// routes
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
-
-const port = process.env.PORT || 8080;
-app.listen(port, console.log(`Listening on port ${port}...`));
+ReactDOM.render(
+	<React.StrictMode>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</React.StrictMode>,
+	document.getElementById("root")
+);
